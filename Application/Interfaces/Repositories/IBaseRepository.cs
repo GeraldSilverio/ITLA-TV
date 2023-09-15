@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.Interfaces.Repositories
+﻿namespace Application.Interfaces.Repositories
 {
-    internal interface IBaseRepository
+    public interface IBaseRepository<TEntity>
     {
+        Task<List<TEntity>> GetAll();
+        Task Add(TEntity entity);
+        Task Update(TEntity entity);
+        Task Delete(TEntity entity);
     }
 }
