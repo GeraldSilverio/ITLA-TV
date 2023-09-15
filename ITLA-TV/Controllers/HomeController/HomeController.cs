@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace ITLA_TV.Controllers
+namespace ITLA_TV.Controllers.HomeController
 {
     public class HomeController : Controller
     {

@@ -7,4 +7,13 @@
     <RootNamespace>ITLA_TV</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\GendersController\" />
+    <Folder Include="Controllers\ProductionController\" />
+    <Folder Include="Controllers\SeriesController\" />
+    <Folder Include="Views\Genders\" />
+    <Folder Include="Views\Production Compain\" />
+    <Folder Include="Views\Series\" />
+  </ItemGroup>
+
 </Project>

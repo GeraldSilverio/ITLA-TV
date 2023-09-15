@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Interfaces.Repositories
+namespace Database.Models
 {
-    public interface IHomeRepository
+    public class Genders:BaseEntity
     {
-        
+
     }
 }
