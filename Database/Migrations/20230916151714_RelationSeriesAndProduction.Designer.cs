@@ -4,6 +4,7 @@ using Database.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database.Migrations
 {
     [DbContext(typeof(ItlaStreamContext))]
-    partial class ItlaStreamContextModelSnapshot : ModelSnapshot
+    [Migration("20230916151714_RelationSeriesAndProduction")]
+    partial class RelationSeriesAndProduction
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,32 +79,6 @@ namespace Database.Migrations
                     b.ToTable("ProductionCompain", (string)null);
                 });
 
-            modelBuilder.Entity("Database.Models.SerieGender", b =>
-                {
-                    b.Property<int>("IdSerie")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdGender")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DateOfCreation")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateOfEdit")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("GenderId")
-                        .HasColumnType("int");
-
-                    b.HasKey("IdSerie", "IdGender");
-
-                    b.HasIndex("GenderId");
-
-                    b.HasIndex("IdGender");
-
-                    b.ToTable("SeriesGenders", (string)null);
-                });
-
             modelBuilder.Entity("Database.Models.Series", b =>
                 {
                     b.Property<int>("Id")
@@ -125,8 +102,7 @@ namespace Database.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("VideoUrl")
                         .IsRequired()
@@ -142,25 +118,6 @@ namespace Database.Migrations
                     b.ToTable("Series", (string)null);
                 });
 
-            modelBuilder.Entity("Database.Models.SerieGender", b =>
-                {
-                    b.HasOne("Database.Models.Genders", "Gender")
-                        .WithMany("SerieGender")
-                        .HasForeignKey("GenderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Database.Models.Series", "Serie")
-                        .WithMany("SerieGender")
-                        .HasForeignKey("IdGender")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-
-                    b.Navigation("Gender");
-
-                    b.Navigation("Serie");
-                });
-
             modelBuilder.Entity("Database.Models.Series", b =>
                 {
                     b.HasOne("Database.Models.ProductionCompain", "ProductionCompain")
@@ -172,19 +129,9 @@ namespace Database.Migrations
                     b.Navigation("ProductionCompain");
                 });
 
-            modelBuilder.Entity("Database.Models.Genders", b =>
-                {
-                    b.Navigation("SerieGender");
-                });
-
             modelBuilder.Entity("Database.Models.ProductionCompain", b =>
                 {
                     b.Navigation("Series");
-                });
-
-            modelBuilder.Entity("Database.Models.Series", b =>
-                {
-                    b.Navigation("SerieGender");
                 });
 #pragma warning restore 612, 618
         }

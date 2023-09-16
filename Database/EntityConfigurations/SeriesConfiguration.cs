@@ -15,8 +15,10 @@ namespace Database.EntityConfigurations
         {
             builder.ToTable("Series");
             builder.HasKey(S => S.Id);
-            builder.Property(S => S.Name);
+            builder.Property(S => S.Name).HasMaxLength(100);
             builder.HasIndex(S => S.Name).IsUnique();
+
+           
         }
     }
 }

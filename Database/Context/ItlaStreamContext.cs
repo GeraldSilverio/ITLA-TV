@@ -23,8 +23,12 @@ namespace Database.Context
             builder.ApplyConfiguration(new GendersConfiguration());
             builder.ApplyConfiguration(new ProductionConfiguration());
             builder.ApplyConfiguration(new SeriesConfiguration());
+            builder.ApplyConfiguration(new SerieGenderConfiguration());
         }
         public DbSet<Genders> Genders { get; set; }
+        public DbSet<Series> Series { get; set; }
+        public DbSet<ProductionCompain> ProductionCompanies { get; set; }
+        public DbSet<SerieGender> SerieGenders { get; set; }
 
 
     }

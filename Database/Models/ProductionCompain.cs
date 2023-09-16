@@ -8,5 +8,6 @@ namespace Database.Models
 {
     public class ProductionCompain:BaseEntity
     {
+        public ICollection<Series> Series { get; set; } = null!;
     }
 }

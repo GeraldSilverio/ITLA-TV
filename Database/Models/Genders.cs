@@ -8,6 +8,6 @@ namespace Database.Models
 {
     public class Genders:BaseEntity
     {
-
+        public ICollection<SerieGender> SerieGender { get; set; } = null!;
     }
 }

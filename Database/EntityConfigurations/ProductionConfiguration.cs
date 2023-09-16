@@ -18,6 +18,16 @@ namespace Database.EntityConfigurations
             builder.Property(P => P.Name).HasMaxLength(100);
             builder.HasIndex(P => P.Name).IsUnique();
 
+            /*Creando la relacion 1 a muchos, ya que una productora puede 
+             * pertenecer a muchas series pero una serie solo pertenece 
+             * a una sola productora.*/
+            builder.HasMany(P => P.Series)
+            .WithOne(S => S.ProductionCompain)
+            .HasForeignKey(S => S.IdProduction)
+            .OnDelete(DeleteBehavior.ClientCascade);
+
+
+
         }
     }
 }

@@ -10,5 +10,10 @@ namespace Database.Models
     {
         public string ImagenUrl { get; set; } = null!;
         public string VideoUrl { get; set; } = null!;
+        public int IdProduction { get; set; }
+        public ProductionCompain ProductionCompain { get; set; } = null!;
+        public ICollection<SerieGender> SerieGender { get; set; } = null!;
+
+
     }
 }
