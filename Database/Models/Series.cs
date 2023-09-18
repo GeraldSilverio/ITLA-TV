@@ -14,6 +14,5 @@ namespace Database.Models
         public ProductionCompain ProductionCompain { get; set; } = null!;
         public ICollection<SerieGender> SerieGender { get; set; } = null!;
 
-
     }
 }

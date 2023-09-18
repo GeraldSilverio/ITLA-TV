@@ -1,11 +1,6 @@
 ﻿using Database.EntityConfigurations;
 using Database.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Database.Context
 {
@@ -15,7 +10,6 @@ namespace Database.Context
         {
 
         }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
