@@ -1,0 +1,27 @@
+﻿@model List<Application.ViewModels.SeriesViewModel>
+
+<div class="row">
+    @if (Model == null)
+    {
+        <h2> NO HAY PRODCUTOS</h2>
+    }
+    else
+    {   
+        @foreach(Application.ViewModels.SeriesViewModel item in Model)
+        {
+             <div class="col-4">
+                <div class="card shadow - sn">
+                    <img  class="bd-placeholder-img card-img-top" src="@item.ImagenUrl">
+
+                    <div class="card-body">
+                        <h4>@item.Name</h4>
+                        <p class="card text"> @item.VideoUrl</p>
+
+                    </div>
+
+                </div>
+
+             </div>
+        }
+    }
+</div>

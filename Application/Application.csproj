@@ -15,13 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\Generic\" />
     <Folder Include="Interfaces\Services\" />
     <Folder Include="Generics\" />
-    <Folder Include="DTOs\" />
-    <Folder Include="Repositories\" />
-    <Folder Include="Services\" />
-    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Database\Database.csproj" />
   </ItemGroup>
 
 </Project>
