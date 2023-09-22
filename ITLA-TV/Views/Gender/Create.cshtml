@@ -1,0 +1,19 @@
+﻿@model Application.ViewModels.GendersViewModel.GenderAddViewModel
+@{
+    bool editMode = Model.Id == ? false : true;
+    ViewData["Title"] ="Create Gender";
+}
+
+<div class="row">
+    <div class="col-4 offset-4">
+        <h2 class="text-body-secondary">CREATE A NEW GENDER</h2>
+        <form method="post">
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">Name</label>
+                <input asp-for="Name" type="text" class="form-control" placeholder="Write the name of the gender" autocomplete="off"/>
+                <span class="text-danger" asp-validation-for="Name"></span>
+            </div>
+            <button type="submit" class="btn btn-success  float-end">Register</button>
+        </form>
+    </div>
+</div>

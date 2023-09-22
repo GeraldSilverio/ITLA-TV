@@ -1,13 +1,9 @@
 ﻿using Database.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Application.ViewModels
+
+namespace Application.ViewModels.SeriesViewModel
 {
-    public class SeriesViewModel:BaseEntity
+    public class SeriesViewModel : BaseEntity
     {
         public string ImagenUrl { get; set; } = null!;
         public string VideoUrl { get; set; } = null!;

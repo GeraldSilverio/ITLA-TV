@@ -16,7 +16,8 @@ namespace Database.EntityConfigurations
             builder.ToTable("Genders");
             builder.HasKey(G => G.Id);
             builder.Property(G => G.Name).HasMaxLength(100);
-            builder.HasIndex(G => G.Name).IsUnique(); 
+            builder.HasIndex(G => G.Name).IsUnique();
+            
         }
     }
 }

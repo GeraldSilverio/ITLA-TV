@@ -1,20 +1,22 @@
-﻿@model List<Application.ViewModels.SeriesViewModel>
+﻿@model List<Application.ViewModels.SeriesViewModel.SeriesViewModel>
 
 <div class="row">
-    @if (Model == null)
+
+    @if (Model.Count == 0)
     {
-        <h2> NO HAY PRODCUTOS</h2>
+        <h2> MANITO ESTA DATABASE ESTA VACIA</h2>
     }
     else
     {   
-        @foreach(Application.ViewModels.SeriesViewModel item in Model)
+        @foreach(Application.ViewModels.SeriesViewModel.SeriesViewModel item in Model)
         {
+
              <div class="col-4">
                 <div class="card shadow - sn">
                     <img  class="bd-placeholder-img card-img-top" src="@item.ImagenUrl">
 
                     <div class="card-body">
-                        <h4>@item.Name</h4>
+                        <h4>@item.</h4>
                         <p class="card text"> @item.VideoUrl</p>
 
                     </div>

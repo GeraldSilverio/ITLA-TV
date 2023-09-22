@@ -1,30 +1,24 @@
-﻿using Application.Interfaces.Generic;
-using Application.ViewModels;
+﻿using Application.Interfaces.Repositories;
+using Application.ViewModels.SeriesViewModel;
 using AutoMapper;
-using Database.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Application.Services
 {
-    public class SeriesServices
+    public class SeriesServices:ISeriesServices
     {
-        public readonly IBaseRepository<Series> _repository;
+        private readonly ISeriesRepository _series;
         public readonly IMapper _mapper;
-
-        public SeriesServices(IBaseRepository<Series> Repository, IMapper mapper)
+        public SeriesServices(IMapper mapper, ISeriesRepository series)
         {
-            _repository = Repository;
             _mapper = mapper;
+            _series = series;
         }
 
-        public async Task<List<SeriesViewModel>>GetAllViewModel()
+        public async Task<List<SeriesViewModel>> GetAllViewModel()
         {
-            var seriesList = await _repository.GetAll();
-            var series = seriesList.Select(_mapper.Map<SeriesViewModel>).ToList();
+            var seriesList = await _series.GetAll();
+            var series =  seriesList.Select(_mapper.Map<SeriesViewModel>).ToList();
             return series;
         }
     }

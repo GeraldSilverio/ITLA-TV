@@ -1,12 +1,36 @@
+using Application.Interfaces.Generic;
+using Application.Interfaces.Repositories;
+using Application.Repositories;
+using Application.Services;
 using Database.Context;
+using Database.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+#region DependyInyections
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+
+#region ProductionCompain
+
+#endregion
+
+#region Genders
+builder.Services.AddScoped<IGendersRepository,GenderRepository>();
+builder.Services.AddScoped<IGenderService,GenderService>();
+
+#endregion
+
+#region Series
+builder.Services.AddScoped<ISeriesRepository,SeriesRespository>();
+builder.Services.AddScoped<ISeriesServices,SeriesServices>();
+#endregion
+
+#endregion
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ItlaStreamContext>(options =>options.UseSqlServer(connectionString));
 

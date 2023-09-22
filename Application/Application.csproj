@@ -17,6 +17,7 @@
   <ItemGroup>
     <Folder Include="Interfaces\Services\" />
     <Folder Include="Generics\" />
+    <Folder Include="ViewModels\ProductionViewModel\" />
   </ItemGroup>
 
   <ItemGroup>
