@@ -7,9 +7,8 @@
 <div class="row">
     <div class="col-4 offset-4">
         <div class="card">
-
             <div class="card-header bg-dark text-light">
-                <h4>@(editMode ? $"Edit the gender: {Model.Name}" : "Create a new Gender")</h4>
+                <h4 class="text-center">@(editMode ? $"EDITING THE GENDER: {Model.Name}" : "CREATING A GENDER")</h4>
             </div>
 
             <div class="card-body">
@@ -20,13 +19,12 @@
                             placeholder="Write the name of the gender" autocomplete="off" />
                         <span class="text-danger" asp-validation-for="Name"></span>
                     </div>
-
                     <input type="hidden" asp-for="Id" />
-
-                    <button class="btn btn-primary float-end" type="submit" >Save</button>
-
+                    <button class="btn btn-primary float-end ms-1" type="submit">Save Gender</button>
+                    <button class="btn btn-success float-end" type="submit" asp-controller="Gender" asp-action="Index" >Come Back</button>
                 </form>
             </div>
+
         </div>
     </div>
 </div>

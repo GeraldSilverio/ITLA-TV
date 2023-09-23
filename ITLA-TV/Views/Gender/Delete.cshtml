@@ -1,0 +1,25 @@
+@model Application.ViewModels.GendersViewModel.SaveGenderViewModel
+@{
+
+    ViewData["Title"] = "Create Gender";
+}
+
+<div class="row">
+    <div class="col-8 mx-auto">
+        <div class="card">
+
+            <div class="card-header bg-danger text-light text-center">
+                <h4>DELETE GENDER</h4>
+            </div>
+            <form method="post">
+                <div class="card-body">
+
+                    <h2> DO YOU WANT TO DELETE THE GENDER: @Model.Name ? </h2>
+                    <input type="hidden" asp-for="Id" />
+                    <button class="btn btn-outline-danger float-end ms-1 " type="submit" asp-controller="Gender" asp-action="Delete">Delete</button>
+                    <button class="btn btn-success float-end" type="submit" asp-controller="Gender" asp-action="Index">Come Back</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

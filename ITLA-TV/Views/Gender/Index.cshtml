@@ -7,40 +7,54 @@
 <div class="row">
     @if (Model.Count == 0)
     {
-        <h2 class="text-center"> Genders Not Found</h2>
+        <div class="col-8 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="text-center">LIST OF GENDERS</h4>
+                    <h4 class="text-center">GENDERS NOT FOUND</h4>
+
+                </div>
+                <div class="card-body">
+                    <a class="btn btn-outline-primary float-end" asp-controller="Gender" asp-action="Create">Create
+                        Gender</a>
+                </div>
+            </div>
+        </div>
     }
     else
     {
-        <div class="col-8 mx-auto"> 
-    <div class="card">
-        <div class="card-header">
-            <h4 class="text-center">LIST OF GENDERS</h4>
+        <div class="col-8 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="text-center">LIST OF GENDERS</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">NAME</th>
+                                <th scope="col">ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Application.ViewModels.GendersViewModel.GenderViewModel item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>
+                                        <a class="btn btn-success" asp-area="Gender" asp-action="Update"
+                                            asp-route-id="@item.Id">Update</a>
+                                        <a class="btn btn-danger" asp-area="Gender" asp-action="Delete"
+                                            asp-route-id="@item.Id">DELETE</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a class="btn btn-outline-primary float-end" asp-controller="Gender" asp-action="Create">Create
+                        Gender</a>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <table class="table text-center">
-                <thead>
-                    <tr>
-                        <th scope="col">NAME</th>
-                        <th scope="col">ACTIONS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (Application.ViewModels.GendersViewModel.GenderViewModel item in Model)
-                    {
-                        <tr>
-                            <td>@item.Name</td>
-                            <td>
-                                <a class="btn btn-success" asp-area="Gender" asp-action="Update" asp-route-id="@item.Id">Update</a>
-                                <a class="btn btn-danger">DELETE</a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-            <a class="btn btn-outline-primary float-end" asp-controller="Gender" asp-action="Create">Create Gender</a>
-        </div>
-    </div>
-</div>
-
     }
 </div>
