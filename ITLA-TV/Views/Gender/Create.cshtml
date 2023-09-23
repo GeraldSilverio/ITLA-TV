@@ -7,8 +7,8 @@
 <div class="row">
     <div class="col-4 offset-4">
         <div class="card">
-            <div class="card-header bg-dark text-light">
-                <h4 class="text-center">@(editMode ? $"EDITING THE GENDER: {Model.Name}" : "CREATING A GENDER")</h4>
+            <div class="card-header bg-success text-light">
+                <h4 class="text-center  text-light">@(editMode ? $"EDITING THE GENDER: {Model.Name}" : "CREATING A GENDER")</h4>
             </div>
 
             <div class="card-body">
@@ -21,7 +21,7 @@
                     </div>
                     <input type="hidden" asp-for="Id" />
                     <button class="btn btn-primary float-end ms-1" type="submit">Save Gender</button>
-                    <button class="btn btn-success float-end" type="submit" asp-controller="Gender" asp-action="Index" >Come Back</button>
+                    <button class="btn btn-success float-end" type="submit" asp-controller="Gender" asp-action="Index">Return</button>
                 </form>
             </div>
 

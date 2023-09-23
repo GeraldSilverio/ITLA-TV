@@ -1,5 +1,6 @@
 using Application.Interfaces.Generic;
 using Application.Interfaces.Repositories;
+using Application.Interfaces.Services;
 using Application.Repositories;
 using Application.Services;
 using Database.Context;
@@ -15,7 +16,8 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 
 #region ProductionCompain
-
+builder.Services.AddScoped<IProductionRepository, ProductionRepository>();
+builder.Services.AddScoped<IProductionService, ProductionService>();
 #endregion
 
 #region Genders

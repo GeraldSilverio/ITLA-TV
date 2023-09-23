@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITLA-TV", "ITLA-TV\ITLA-TV.csproj", "{AEFA5ADC-69E4-4E9F-A3EB-8A94FCFDB629}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITLA-TV", "ITLA-TV\ITLA-TV.csproj", "{AEFA5ADC-69E4-4E9F-A3EB-8A94FCFDB629}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{B5E365B9-F3FE-436E-8905-2305C34970CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database", "Database\Database.csproj", "{B5E365B9-F3FE-436E-8905-2305C34970CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{605497E3-D3F1-4FD5-B033-0A84E1D52407}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{605497E3-D3F1-4FD5-B033-0A84E1D52407}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

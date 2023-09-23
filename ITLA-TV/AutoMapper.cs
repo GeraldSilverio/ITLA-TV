@@ -1,4 +1,5 @@
 ﻿using Application.ViewModels.GendersViewModel;
+using Application.ViewModels.ProductionViewModel;
 using Application.ViewModels.SeriesViewModel;
 using AutoMapper;
 using Database.Models;
@@ -11,11 +12,15 @@ namespace ITLA_TV
         {
             CreateMap<SeriesViewModel, Series>();
             CreateMap<Series, SeriesViewModel>();
-            CreateMap<Genders,GenderViewModel>();
 
-            
+
+            CreateMap<Genders,GenderViewModel>();
             CreateMap<SaveGenderViewModel,Genders>();
             CreateMap<Genders,SaveGenderViewModel>();
+
+            CreateMap<ProductionCompain, ProductionViewModel>();
+            CreateMap<ProductionSaveViewModel, ProductionCompain>();
+            CreateMap<ProductionCompain, ProductionSaveViewModel>();
 
         }
     }

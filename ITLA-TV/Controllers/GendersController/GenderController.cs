@@ -24,10 +24,22 @@ namespace ITLA_TV.Controllers.GendersController
         [HttpPost]
         public async Task<IActionResult> Create(SaveGenderViewModel vm)
         {
-            await _genderService.AddAsync(vm);
-            return RedirectToRoute(new { controller = "Gender", action = "Index" });
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View("Create", vm);
+                }
+                await _genderService.AddAsync(vm);
+                return RedirectToRoute(new { controller = "Gender", action = "Index" });
+            }
+            catch (Exception e)
+            {
+                return View("Create", e);
+            }
+
         }
-        
+
         public async Task<IActionResult> Update(int id)
         {
             return View("Create", await _genderService.GetByIdAsync(id));
@@ -36,8 +48,19 @@ namespace ITLA_TV.Controllers.GendersController
         [HttpPost]
         public async Task<IActionResult> Update(SaveGenderViewModel vm)
         {
-            await _genderService.UpdateAsync(vm);
-            return RedirectToRoute(new { controller = "Gender", action = "Index" });
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View("Create", vm);
+                }
+                await _genderService.AddAsync(vm);
+                return RedirectToRoute(new { controller = "Gender", action = "Index" });
+            }
+            catch (Exception e)
+            {
+                return View("Create", e);
+            }
         }
 
         public async Task<IActionResult> Delete(int id)
@@ -46,11 +69,19 @@ namespace ITLA_TV.Controllers.GendersController
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(SaveGenderViewModel vm) 
+        public async Task<IActionResult> Delete(SaveGenderViewModel vm)
         {
-            await _genderService.DeleteAsync(vm);
-            return RedirectToRoute(new { controller = "Gender", action = "Index" });
+            try
+            {
+                await _genderService.DeleteAsync(vm);
+                return RedirectToRoute(new { controller = "Gender", action = "Index" });
+            }
+            catch (Exception e)
+            {
+                return View("Delete", e);
+            }
+
         }
-       
+
     }
 }

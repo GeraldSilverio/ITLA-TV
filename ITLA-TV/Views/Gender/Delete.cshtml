@@ -8,7 +8,7 @@
     <div class="col-8 mx-auto">
         <div class="card">
 
-            <div class="card-header bg-danger text-light text-center">
+            <div class="card-header bg-success text-light text-center">
                 <h4>DELETE GENDER</h4>
             </div>
             <form method="post">
@@ -17,7 +17,7 @@
                     <h2> DO YOU WANT TO DELETE THE GENDER: @Model.Name ? </h2>
                     <input type="hidden" asp-for="Id" />
                     <button class="btn btn-outline-danger float-end ms-1 " type="submit" asp-controller="Gender" asp-action="Delete">Delete</button>
-                    <button class="btn btn-success float-end" type="submit" asp-controller="Gender" asp-action="Index">Come Back</button>
+                    <button class="btn btn-success float-end" type="submit" asp-controller="Gender" asp-action="Index">Return</button>
                 </div>
             </form>
         </div>

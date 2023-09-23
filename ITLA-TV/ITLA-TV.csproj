@@ -8,8 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\ProductionController\" />
-    <Folder Include="Views\Production Compain\" />
     <Folder Include="Views\Series\" />
   </ItemGroup>
 
