@@ -35,7 +35,6 @@ namespace Application.Services
             var productions = await _productionRepository.GetAllAsync();
             var productionsList = productions.Select(_mapper.Map<ProductionViewModel>).ToList();
             return productionsList;
-
         }
 
         public async Task<ProductionSaveViewModel> GetByIdAsync(int id)

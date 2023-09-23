@@ -5,16 +5,18 @@
 }
 
 <div class="row">
+      <div class="col-2 offset-10">
+          <a class="btn btn-outline-primary float-end" asp-controller="Gender" asp-action="Create">Create Gender</a>
+    </div>
     @if (Model.Count == 0)
     {
         <div class="col-8 mx-auto">
             <div class="card">
-                <div class="card-header bg-success text-light">
+                <div class="card-header bg-primary text-light">
                     <h4 class="text-center">GENDERS NOT FOUND</h4>
 
                 </div>
                 <div class="card-body">
-                     <a class="btn btn-outline-primary float-end" asp-controller="Gender" asp-action="Create">Create Gender</a>
                 </div>
             </div>
         </div>
@@ -25,7 +27,7 @@
         <div class="col-8 mx-auto">
             <div class="card">
                
-                <div class="card-header bg-success text-light">
+                <div class="card-header bg-primary text-light">
                     <h4 class="text-center">LIST OF GENDERS</h4>
                 </div>
                 <div class="card-body">
@@ -51,7 +53,6 @@
                             }
                         </tbody>
                     </table>
-                    <a class="btn btn-outline-primary float-end" asp-controller="Gender" asp-action="Create">Create Gender</a>
                 </div>
             </div>
         </div>

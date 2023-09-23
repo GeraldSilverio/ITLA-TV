@@ -1,5 +1,25 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Application.ViewModels.ProductionViewModel.ProductionSaveViewModel
 @{
+
+    ViewData["Title"] = "Delete Production";
 }
+
+<div class="row">
+    <div class="col-8 mx-auto">
+        <div class="card">
+
+            <div class="card-header bg-primary text-light text-center">
+                <h4>DELETE PRODUCTION</h4>
+            </div>
+            <form method="post">
+                <div class="card-body">
+
+                    <h2> DO YOU WANT TO DELETE THE PRODUCTION: @Model.Name ? </h2>
+                    <input type="hidden" asp-for="Id" />
+                    <button class="btn btn-outline-danger float-end ms-1 " type="submit" asp-controller="Production" asp-action="Delete">Delete</button>
+                    <button class="btn btn-danger float-end" type="submit" asp-controller="Production" asp-action="Index">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
