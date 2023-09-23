@@ -1,19 +1,31 @@
-﻿@model Application.ViewModels.GendersViewModel.GenderAddViewModel
+﻿@model Application.ViewModels.GendersViewModel.SaveGenderViewModel
 @{
-    bool editMode = Model.Id == ? false : true;
-    ViewData["Title"] ="Create Gender";
+    bool editMode = Model.Id == 0 ? false : true;
+    ViewData["Title"] = "Create Gender";
 }
 
 <div class="row">
     <div class="col-4 offset-4">
-        <h2 class="text-body-secondary">CREATE A NEW GENDER</h2>
-        <form method="post">
-            <div class="mb-3">
-                <label asp-for="Name" class="form-label">Name</label>
-                <input asp-for="Name" type="text" class="form-control" placeholder="Write the name of the gender" autocomplete="off"/>
-                <span class="text-danger" asp-validation-for="Name"></span>
+        <div class="card">
+
+            <div class="card-header bg-dark text-light">
+                <h4>@(editMode ? $"Edit the gender: {Model.Name}" : "Create a new Gender")</h4>
             </div>
-            <button type="submit" class="btn btn-success  float-end">Register</button>
-        </form>
+
+            <div class="card-body">
+                <form method="post">
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label">Name</label>
+                        <input asp-for="Name" type="text" class="form-control"
+                            placeholder="Write the name of the gender" autocomplete="off" />
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+
+                    <input type="hidden" asp-for="Id" />
+
+                    <button class="btn btn-primary float-end" type="submit" asp-controller="Gender" asp-action="Create">Save</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

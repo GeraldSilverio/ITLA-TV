@@ -17,17 +17,17 @@ namespace ITLA_TV.Controllers.GendersController
             return View(await _genderService.GetAll());
         }
         public IActionResult Create(){
-            return View();
+            return View("Create", new SaveGenderViewModel());
         }
         [HttpPost]
-        public async Task<IActionResult> Create(GenderAddViewModel vm)
+        public async Task<IActionResult> Create(SaveGenderViewModel vm)
         {
             await _genderService.AddAsync(vm);
             return RedirectToRoute(new { controller = "Gender", action = "Index" });
         }
         public IActionResult Update()
         {
-            return View();
+            return View("Create", new SaveGenderViewModel());
         }
 
     

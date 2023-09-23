@@ -12,7 +12,7 @@ namespace ITLA_TV
             CreateMap<SeriesViewModel, Series>();
             CreateMap<Series, SeriesViewModel>();
             CreateMap<Genders,GenderViewModel>();
-            CreateMap<GenderAddViewModel,Genders>();
+            CreateMap<SaveGenderViewModel,Genders>();
 
         }
     }

@@ -16,7 +16,7 @@ public class GenderService : IGenderService
         _mapper = mapper;
     }
 
-    public async Task AddAsync(GenderAddViewModel vm)
+    public async Task AddAsync(SaveGenderViewModel vm)
     {
         var gender = _mapper.Map<Genders>(vm);
         gender.DateOfCreation = DateTime.Now;
@@ -36,7 +36,7 @@ public class GenderService : IGenderService
         return genders;
     }
 
-    public async Task UpdateAsync(GenderAddViewModel vm)
+    public async Task UpdateAsync(SaveGenderViewModel vm)
     {
         var gender = _mapper.Map<Genders>(vm);
         await _genderRepository.Update(gender);
