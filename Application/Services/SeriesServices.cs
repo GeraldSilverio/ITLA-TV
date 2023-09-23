@@ -35,14 +35,17 @@ namespace Application.Services
             await _series.AddAsync(serie);
         }
 
-        public Task UpdateAsync(SeriesViewModel vm)
+        public async Task UpdateAsync(SeriesViewModel vm)
         {
-            throw new NotImplementedException();
+            var serie = _mapper.Map<Series>(vm);
+            serie.DateOfEdit = DateTime.Now;
+            await _series.UpdateAsync(serie);
         }
 
-        public Task DeleteAsync(SeriesViewModel vm)
+        public async Task DeleteAsync(SeriesViewModel vm)
         {
-            throw new NotImplementedException();
+            var serie = _mapper.Map<Series>(vm);
+            await _series.DeleteAsync(serie);
         }
     }
 }
