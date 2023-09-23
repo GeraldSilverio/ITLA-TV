@@ -20,25 +20,33 @@ public class GenderService : IGenderService
     {
         var gender = _mapper.Map<Genders>(vm);
         gender.DateOfCreation = DateTime.Now;
-        await _genderRepository.Add(gender);
+        await _genderRepository.AddAsync(gender);
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync(SaveGenderViewModel vm)
     {
-        var gender = await _genderRepository.GetById(1);
-        await _genderRepository.Delete(gender);
+        var gender = _mapper.Map<Genders>(vm);
+        await _genderRepository.DeleteAsync(gender);
     }
 
-    public async Task<List<GenderViewModel>> GetAll()
+    public async Task<List<GenderViewModel>> GetAllAsync()
     {
-        var gendersList = await _genderRepository.GetAll();
+        var gendersList = await _genderRepository.GetAllAsync();
         var genders = gendersList.Select(_mapper.Map<GenderViewModel>).ToList();
         return genders;
+    }
+
+    public async Task<SaveGenderViewModel> GetByIdAsync(int id)
+    {
+        var gender = await _genderRepository.GetByIdAsync(id);
+        var saveGender = _mapper.Map<SaveGenderViewModel>(gender);
+        return saveGender;
     }
 
     public async Task UpdateAsync(SaveGenderViewModel vm)
     {
         var gender = _mapper.Map<Genders>(vm);
-        await _genderRepository.Update(gender);
+        gender.DateOfEdit = DateTime.Now;
+        await _genderRepository.UpdateAsync(gender);
     }
 }

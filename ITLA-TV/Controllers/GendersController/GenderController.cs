@@ -14,22 +14,43 @@ namespace ITLA_TV.Controllers.GendersController
         }
         public async Task<IActionResult> Index()
         {
-            return View(await _genderService.GetAll());
+            return View(await _genderService.GetAllAsync());
         }
-        public IActionResult Create(){
+        public IActionResult Create()
+        {
             return View("Create", new SaveGenderViewModel());
         }
+
         [HttpPost]
         public async Task<IActionResult> Create(SaveGenderViewModel vm)
         {
             await _genderService.AddAsync(vm);
             return RedirectToRoute(new { controller = "Gender", action = "Index" });
         }
-        public IActionResult Update()
+        
+        public async Task<IActionResult> Update(int id)
         {
-            return View("Create", new SaveGenderViewModel());
+            return View("Create", await _genderService.GetByIdAsync(id));
         }
 
-    
+        [HttpPost]
+        public async Task<IActionResult> Update(SaveGenderViewModel vm)
+        {
+            await _genderService.UpdateAsync(vm);
+            return RedirectToRoute(new { controller = "Gender", action = "Index" });
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            return View("Delete", await _genderService.GetByIdAsync(id));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(SaveGenderViewModel vm) 
+        {
+            await _genderService.DeleteAsync(vm);
+            return RedirectToRoute(new { controller = "Gender", action = "Index" });
+        }
+       
     }
 }

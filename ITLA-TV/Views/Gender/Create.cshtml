@@ -13,7 +13,7 @@
             </div>
 
             <div class="card-body">
-                <form method="post">
+                <form method="post" asp-controller="Gender" asp-action="@(editMode ? "Update":"Create")">
                     <div class="mb-3">
                         <label asp-for="Name" class="form-label">Name</label>
                         <input asp-for="Name" type="text" class="form-control"
@@ -23,7 +23,8 @@
 
                     <input type="hidden" asp-for="Id" />
 
-                    <button class="btn btn-primary float-end" type="submit" asp-controller="Gender" asp-action="Create">Save</button>
+                    <button class="btn btn-primary float-end" type="submit" >Save</button>
+
                 </form>
             </div>
         </div>

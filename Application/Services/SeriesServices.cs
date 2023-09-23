@@ -17,7 +17,7 @@ namespace Application.Services
 
         public async Task<List<SeriesViewModel>> GetAllViewModel()
         {
-            var seriesList = await _series.GetAll();
+            var seriesList = await _series.GetAllAsync();
             var series =  seriesList.Select(_mapper.Map<SeriesViewModel>).ToList();
             return series;
         }

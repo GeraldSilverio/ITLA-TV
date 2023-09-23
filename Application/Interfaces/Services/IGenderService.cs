@@ -4,10 +4,11 @@ namespace Application.Interfaces.Repositories
 {
     public interface IGenderService
     {
-        Task<List<GenderViewModel>>GetAll();
+        Task<SaveGenderViewModel>GetByIdAsync(int id);
+        Task<List<GenderViewModel>>GetAllAsync();
         Task AddAsync(SaveGenderViewModel vm);
         Task UpdateAsync(SaveGenderViewModel vm);
-        Task DeleteAsync(int id);
+        Task DeleteAsync(SaveGenderViewModel vm);
         
     }
 
