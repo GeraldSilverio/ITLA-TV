@@ -20,7 +20,7 @@ namespace Database.EntityConfigurations
             .HasForeignKey(SG => SG.IdSerie)
             .OnDelete(DeleteBehavior.ClientCascade);
 
-             builder.HasOne(SG => SG.Serie)
+             builder.HasOne(SG => SG.Gender)
             .WithMany(S => S.SerieGender)
             .HasForeignKey(SG => SG.IdGender)
             .OnDelete(DeleteBehavior.ClientCascade);

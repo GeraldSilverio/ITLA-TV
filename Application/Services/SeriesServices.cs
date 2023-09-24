@@ -31,6 +31,7 @@ namespace Application.Services
         public async Task AddAsync(SeriesViewModel vm)
         {
             var serie = _mapper.Map<Series>(vm);
+            serie.IdProduction = vm.IdProduction;
             serie.DateOfCreation = DateTime.Now;
             await _series.AddAsync(serie);
         }

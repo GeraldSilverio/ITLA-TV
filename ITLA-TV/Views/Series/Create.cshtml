@@ -1,1 +1,69 @@
-﻿
+﻿@using Application.ViewModels.ProductionViewModel
+@model Application.ViewModels.SeriesViewModel.SeriesViewModel
+
+@{
+    bool editMode = Model.Id == 0 ? true : false;
+    ViewData["Title"] = "Save Serie";
+}
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card">
+            <div class="card-header bg-dark text-light">
+                <h4>@(editMode ? "Adding a New Serie" : $"Editing Serie: {Model.Name}")</h4>
+            </div>
+            <div class="card-body">
+                 <form method="post" asp-controller="Series" asp-action="Create"> 
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label">Name: </label>
+                        <input  asp-for="Name" type="text" class="form-control" autocomplete="off"> 
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ImagenUrl" class="form-label">Imagen Url: </label>
+                        <input asp-for="ImagenUrl" type="text" class="form-control" autocomplete="off" > 
+                    <div class="mb-3">
+                        <label asp-for="VideoUrl" class="form-label">Video Url: </label>
+                        <input asp-for= "VideoUrl" type="text" step="any" class="form-control" autocomplete="off" >
+                           
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="IdProduction" class="form-label">Production: </label>
+                        <select asp-for="IdProduction" class="form-select"> 
+                            @foreach(ProductionViewModel production in ViewBag.Productions)
+                            {
+                                    <option asp-for="IdProduction" value="@production.Id">@production.Name</option>
+                            }
+                            
+                            
+                        </select>
+                        <span class="text-danger"></span>
+                    </div>
+
+                     <div class="mb-3">
+                        <label class="form-label">Primary Gender: </label>
+                        <select class="form-select" name="Categoria"> 
+                            <option value="">Seleccione una opcion</option>
+                            <option value="1">Category Test</option>
+                            <option value="2">Category Test 2</option>
+                        </select>
+                        <span class="text-danger"></span>
+                    </div>
+
+                     <div class="mb-3">
+                        <label class="form-label">Secundary Gender: </label>
+                        <select class="form-select" name="Categoria"> 
+                            <option value="">Seleccione una opcion</option>
+                            <option value="1">Category Test</option>
+                            <option value="2">Category Test 2</option>
+                        </select>
+                        <span class="text-danger"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary float-end ms-1">Save Serie</button>
+                    <a asp-controller="Series" asp-action="Index" class="btn btn-danger float-end">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
