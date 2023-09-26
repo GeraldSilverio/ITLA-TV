@@ -1,0 +1,18 @@
+﻿@model Application.ViewModels.SeriesViewModel.SeriesViewModel
+@{
+    ViewData["Title"] = $"Details of The Serie";
+}
+
+<div class="container">
+
+    <div class="text-center mb-4">
+        <h1>@Model.Name</h1>
+
+    </div>
+    <div class="d-flex justify-content-center mb-5">
+        <iframe width="900" height="490" src="@Model.VideoUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; 
+        web-share" allowfullscreen></iframe>
+
+    </div>
+
+</div>

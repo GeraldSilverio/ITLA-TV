@@ -1,7 +1,6 @@
 ﻿using Application.Interfaces.Repositories;
 using Database.Context;
 using Database.Models;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Application.Repositories
 {
-    public class ProductionRepository : BaseRepository<ProductionCompain>, IProductionRepository
+    public class SerieGenderRepository : BaseRepository<SerieGender>, ISeriesGendersRepository
     {
-        public ProductionRepository(ItlaStreamContext dbContext) : base(dbContext)
+        public SerieGenderRepository(ItlaStreamContext dbContext) : base(dbContext)
         {
-
+            
         }
     }
 }

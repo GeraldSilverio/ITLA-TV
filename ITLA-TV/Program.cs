@@ -31,6 +31,10 @@ builder.Services.AddScoped<ISeriesRepository,SeriesRespository>();
 builder.Services.AddScoped<ISeriesServices,SeriesServices>();
 #endregion
 
+
+builder.Services.AddScoped<ISeriesGendersRepository, SerieGenderRepository>();
+builder.Services.AddScoped<ISerieGenderService, SerieGenderService>();
+
 #endregion
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

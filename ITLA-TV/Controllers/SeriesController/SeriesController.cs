@@ -9,11 +9,13 @@ namespace ITLA_TV.Controllers.SeriesController
     {
         private readonly ISeriesServices _seriesServices;
         private readonly IProductionService _productionService;
+        private readonly IGenderService _genderService;
 
-        public SeriesController(ISeriesServices seriesServices, IProductionService productionService)
+        public SeriesController(ISeriesServices seriesServices, IProductionService productionService, IGenderService genderService)
         {
             _seriesServices = seriesServices;
             _productionService = productionService;
+            _genderService = genderService;
         }
         public async Task<IActionResult> Index()
         {
@@ -22,6 +24,7 @@ namespace ITLA_TV.Controllers.SeriesController
         public async Task<IActionResult> Create()
         {
             ViewBag.Productions = await _productionService.GetAllAsync();
+            ViewBag.Genders = await _genderService.GetAllAsync();
             return View("Create", new SeriesViewModel());
         }
         [HttpPost]

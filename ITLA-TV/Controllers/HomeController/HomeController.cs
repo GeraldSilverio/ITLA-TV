@@ -1,4 +1,6 @@
-﻿using ITLA_TV.Models;
+﻿using Application.Interfaces.Repositories;
+using Application.ViewModels.SeriesViewModel;
+using ITLA_TV.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,27 +8,22 @@ namespace ITLA_TV.Controllers.HomeController
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ISeriesServices _seriesServices;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ISeriesServices seriesServices)
         {
-            _logger = logger;
+            _seriesServices = seriesServices;
+        }
+        public async Task<IActionResult> Index()
+        {
+            return View(await _seriesServices.GetAllAsync());
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Details(int id)
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            SeriesViewModel serie = await _seriesServices.GetByIdAsync(id);
+            
+            return View("Details",serie);
         }
     }
 }

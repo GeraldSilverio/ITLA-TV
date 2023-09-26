@@ -1,11 +1,9 @@
 ﻿@model List<Application.ViewModels.SeriesViewModel.SeriesViewModel>
 
 <div class="container-fluid">
-
     <div class="row">
         <div class="col-2 offset-10">
-            <a class="btn btn-outline-primary float-end mb-3" asp-controller="Series" asp-action="Create">Add
-                Serie</a>
+            <a class="btn btn-outline-primary float-end mb-3" asp-controller="Series" asp-action="Create">Add Serie</a>
         </div>
         <div class="col-12">
             <div class="card">
@@ -19,9 +17,12 @@
                                     <img src="@item.ImagenUrl" class="card-img-top img-serie-size">
                                     <div class="card-body">
                                         <h5 class="card-title">@item.Name</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up
-                                            the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        <p class="card-text">Production: @item.ProductionName</p>
+                                        <p class="card-text">Primary Gender: @item.IdGender</p>
+                                        <p class="card-text">Secundary Gender: @item.IdGenderSecundary</p>
+                                        <a href="#" class="btn btn-warning">UPDATE</a>
+                                        <a href="#" class="btn btn-danger">DELETE</a>
+
                                     </div>
                                 </div>
                           </div>

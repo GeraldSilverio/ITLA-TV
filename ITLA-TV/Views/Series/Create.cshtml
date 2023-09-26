@@ -1,4 +1,5 @@
 ﻿@using Application.ViewModels.ProductionViewModel
+@using Application.ViewModels.GendersViewModel
 @model Application.ViewModels.SeriesViewModel.SeriesViewModel
 
 @{
@@ -34,31 +35,33 @@
                             {
                                     <option asp-for="IdProduction" value="@production.Id">@production.Name</option>
                             }
-                            
-                            
                         </select>
                         <span class="text-danger"></span>
                     </div>
 
                      <div class="mb-3">
-                        <label class="form-label">Primary Gender: </label>
-                        <select class="form-select" name="Categoria"> 
-                            <option value="">Seleccione una opcion</option>
-                            <option value="1">Category Test</option>
-                            <option value="2">Category Test 2</option>
+                        <label asp-for="IdGender" class="form-label">Primary Gender: </label>
+                        <select asp-for="IdGender" class="form-select"> 
+                            @foreach(GenderViewModel gender in ViewBag.Genders)
+                            {
+                                    <option asp-for="IdGender" value="@gender.Id">@gender.Name</option>
+                            }
                         </select>
                         <span class="text-danger"></span>
                     </div>
 
                      <div class="mb-3">
-                        <label class="form-label">Secundary Gender: </label>
-                        <select class="form-select" name="Categoria"> 
-                            <option value="">Seleccione una opcion</option>
-                            <option value="1">Category Test</option>
-                            <option value="2">Category Test 2</option>
+                        <label asp-for="IdGenderSecundary" class="form-label">Secundary Gender: </label>
+                        <select asp-for="IdGenderSecundary" class="form-select"> 
+                            @foreach(GenderViewModel gender in ViewBag.Genders)
+                            {
+                                    <option asp-for="IdGenderSecundary" value="@gender.Id">@gender.Name</option>
+                            }
                         </select>
                         <span class="text-danger"></span>
                     </div>
+
+                    
 
                     <button type="submit" class="btn btn-primary float-end ms-1">Save Serie</button>
                     <a asp-controller="Series" asp-action="Index" class="btn btn-danger float-end">Cancel</a>

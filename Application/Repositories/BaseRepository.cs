@@ -32,6 +32,18 @@ namespace Application.Repositories
             return await _dbSet.ToListAsync();
         }
 
+        public async Task<List<TEntity>> GetAllWithIncludeAsync(List<string> properties)
+        {
+            var query = _dbSet.AsQueryable();
+
+            foreach(string property in properties)
+            {
+                query = query.Include(property);
+            }
+
+            return await query.ToListAsync();
+        }
+
         public async Task<TEntity> GetByIdAsync(int id)
         {
             return await _dbSet.FindAsync(id);
