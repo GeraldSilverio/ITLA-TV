@@ -9,6 +9,7 @@ namespace Application.Interfaces.Repositories
         Task AddAsync(SeriesViewModel vm);
         Task UpdateAsync(SeriesViewModel vm);
         Task DeleteAsync(SeriesViewModel vm);
+        Task<List<SeriesViewModel>> GetByFiltersAsync(SerieFilterViewModel serieFilter);
 
     }
 }

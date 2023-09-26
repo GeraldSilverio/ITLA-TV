@@ -34,6 +34,25 @@ namespace Application.Services
             return seriesList;
         }
 
+        public async Task<List<SeriesViewModel>> GetByFiltersAsync(SerieFilterViewModel serieFilter)
+        {
+            var series = await _series.GetAllWithIncludeAsync(new List<string> { "ProductionCompain" });
+            var seriesList = series.Select(_mapper.Map<SeriesViewModel>).ToList();
+          
+            
+
+            if (serieFilter.Id != 0)
+            {
+                seriesList = seriesList.Where(s => s.IdProduction == serieFilter.Id).ToList();
+            }
+            if (serieFilter.Name !=null)
+            {
+                seriesList = seriesList.Where(s => s.Name.ToLower() == serieFilter.Name.ToLower()).ToList();
+            }
+
+            return seriesList;
+        }
+
 
         public async Task AddAsync(SeriesViewModel vm)
         {

@@ -1,10 +1,41 @@
-﻿@model List<Application.ViewModels.SeriesViewModel.SeriesViewModel>
+﻿@using Application.ViewModels.SeriesViewModel
+@using Application.ViewModels.ProductionViewModel
+@model List<Application.ViewModels.SeriesViewModel.SeriesViewModel>
+
 
 <div class="container-fluid">
+
+    <div class="d-flex justify-content-start mb-2">
+        <form class="row g-3" asp-controller="Home" asp-action="Index">
+            <div class="col-auto">
+                <input type="text" class="form-control" id="Name" name="Name"
+                    placeholder="Filter by name">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">Filter by name</button>
+            </div>
+        </form>
+
+        <form class="row g-3 ms-3" asp-controller="Home" asp-action="Index">
+            <div class="col-auto">
+                <select class="form-select" id="Id" name="Id" aria-label="Floating label select example">
+                    <option selected>Select a Production</option>
+                    @foreach (ProductionViewModel production in ViewBag.Productions)
+                    {
+                        <option value="@production.Id">@production.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">Filter by production</button>
+            </div>
+        </form>
+
+    </div>
+
+
+
     <div class="row">
-        <div class="col-2 offset-10">
-            <a class="btn btn-outline-primary float-end mb-3" asp-controller="Series" asp-action="Create">Add Serie</a>
-        </div>
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
@@ -24,7 +55,7 @@
                                             asp-route-id="@item.Id">Details</a>
                                     </div>
                                 </div>
-                          </div>
+                            </div>
                         }
                     </div>
                 </div>
