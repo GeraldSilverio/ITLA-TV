@@ -6,9 +6,9 @@ namespace Application.Interfaces.Repositories
     {
         Task<SeriesViewModel> GetByIdAsync(int id);
         Task<List<SeriesViewModel>> GetAllAsync();
-        Task AddAsync(SeriesViewModel vm);
-        Task UpdateAsync(SeriesViewModel vm);
-        Task DeleteAsync(SeriesViewModel vm);
+        Task AddAsync(SeriesSaveViewModel vm);
+        Task UpdateAsync(SeriesSaveViewModel vm);
+        Task DeleteAsync(SeriesSaveViewModel vm);
         Task<List<SeriesViewModel>> GetByFiltersAsync(SerieFilterViewModel serieFilter);
 
     }

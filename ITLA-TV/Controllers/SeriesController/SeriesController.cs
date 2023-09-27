@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces.Repositories;
 using Application.Interfaces.Services;
+using Application.ViewModels.ProductionViewModel;
 using Application.ViewModels.SeriesViewModel;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,13 +26,46 @@ namespace ITLA_TV.Controllers.SeriesController
         {
             ViewBag.Productions = await _productionService.GetAllAsync();
             ViewBag.Genders = await _genderService.GetAllAsync();
-            return View("Create", new SeriesViewModel());
+            return View("Create", new SeriesSaveViewModel());
         }
         [HttpPost]
-        public async Task<IActionResult> Create(SeriesViewModel vm)
+        public async Task<IActionResult> Create(SeriesSaveViewModel vm)
         {
-            await _seriesServices.AddAsync(vm);
-            return RedirectToRoute(new { controller = "Series", action = "Index" });
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    ViewBag.Productions = await _productionService.GetAllAsync();
+                    ViewBag.Genders = await _genderService.GetAllAsync();
+                    return View("Create", vm);
+                }
+                await _seriesServices.AddAsync(vm);
+                return RedirectToRoute(new { controller = "Series", action = "Index" });
+            }
+            catch(Exception e)
+            {
+                return View("Index", e);
+            }
+            
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            return View("Delete", await _seriesServices.GetByIdAsync(id));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(SeriesSaveViewModel vm)
+        {
+            try
+            {
+                await _seriesServices.DeleteAsync(vm);
+                return RedirectToRoute(new { controller = "Series", action = "Index" });
+            }
+            catch (Exception e)
+            {
+                return View("Delete", e);
+            }
         }
     }
 }

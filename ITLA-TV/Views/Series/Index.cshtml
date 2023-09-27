@@ -1,5 +1,6 @@
 ﻿@model List<Application.ViewModels.SeriesViewModel.SeriesViewModel>
 
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-2 offset-10">
@@ -18,10 +19,9 @@
                                     <div class="card-body">
                                         <h5 class="card-title">@item.Name</h5>
                                         <p class="card-text">Production: @item.ProductionName</p>
-                                        <p class="card-text">Primary Gender: @item.IdGender</p>
-                                        <p class="card-text">Secundary Gender: @item.IdGenderSecundary</p>
+                                        <p class="card-text">Genders: @item.PrimaryGender, @item.SecundaryGender</p>
                                         <a href="#" class="btn btn-warning">UPDATE</a>
-                                        <a href="#" class="btn btn-danger">DELETE</a>
+                                        <a asp-controller="Series" asp-action="Delete" asp-route-id="@item.Id"  class="btn btn-danger">DELETE</a>
 
                                     </div>
                                 </div>

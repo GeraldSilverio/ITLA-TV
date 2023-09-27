@@ -5,6 +5,7 @@ namespace Application.Interfaces.Repositories
 {
     public interface IGendersRepository:IBaseRepository<Genders>
     {
+        
 
     }
 }

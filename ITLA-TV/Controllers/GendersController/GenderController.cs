@@ -54,7 +54,7 @@ namespace ITLA_TV.Controllers.GendersController
                 {
                     return View("Create", vm);
                 }
-                await _genderService.AddAsync(vm);
+                await _genderService.UpdateAsync(vm);
                 return RedirectToRoute(new { controller = "Gender", action = "Index" });
             }
             catch (Exception e)

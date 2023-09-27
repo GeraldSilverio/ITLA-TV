@@ -18,12 +18,12 @@ namespace Database.EntityConfigurations
             builder.HasOne(SG => SG.Serie)
             .WithMany(S => S.SerieGender)
             .HasForeignKey(SG => SG.IdSerie)
-            .OnDelete(DeleteBehavior.ClientCascade);
+            .OnDelete(DeleteBehavior.Cascade);
 
              builder.HasOne(SG => SG.Gender)
             .WithMany(S => S.SerieGender)
             .HasForeignKey(SG => SG.IdGender)
-            .OnDelete(DeleteBehavior.ClientCascade);
+            .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

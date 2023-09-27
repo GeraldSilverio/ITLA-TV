@@ -14,6 +14,16 @@ namespace Application.Repositories
 
         }
 
+        public List<Genders> GenderBySerie(int idSerie)
+        {
+            return _dbContext.SerieGenders.Where(x => x.IdSerie == idSerie)
+                .Select(x => new Genders
+            {
+                Id = x.Gender.Id,
+                Name = x.Gender.Name
+            }).ToList();  
+        }
+
         public async Task<Series> GetSerieByName(string name)
         {
             var serie = await _dbContext.Series.FirstOrDefaultAsync(s => s.Name == name);

@@ -1,6 +1,8 @@
 ﻿
 
 
+using Database.Models;
+
 namespace Application.ViewModels.SeriesViewModel
 {
     public class SeriesViewModel
@@ -12,7 +14,8 @@ namespace Application.ViewModels.SeriesViewModel
         public int IdProduction { get; set; }
         public string ProductionName { get; set; } = null!;
         public int IdGender { get; set; }
+        public string PrimaryGender { get; set; } = null!;
         public int IdGenderSecundary { get; set; }
-
+        public string SecundaryGender { get; set; } = null!;
     }
 }

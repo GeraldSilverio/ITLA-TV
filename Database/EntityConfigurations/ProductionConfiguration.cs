@@ -24,7 +24,7 @@ namespace Database.EntityConfigurations
             builder.HasMany(P => P.Series)
             .WithOne(S => S.ProductionCompain)
             .HasForeignKey(S => S.IdProduction)
-            .OnDelete(DeleteBehavior.ClientCascade);
+            .OnDelete(DeleteBehavior.Cascade);
 
 
 

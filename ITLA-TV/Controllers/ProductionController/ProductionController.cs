@@ -83,9 +83,5 @@ namespace ITLA_TV.Controllers.ProductionController
                 return View("Delete", e);
             }
         }
-
-
-
-
     }
 }
