@@ -18,11 +18,15 @@ namespace Application.Repositories
         {
             _dbContext = dbContext;
         }
-
-        public List<SerieGender> GetSerieGendersByIdSerie(int idSerie)
+        public async Task ClearSerieGender(int idSerie)
         {
-            var gender = _dbContext.SerieGenders.Include(x => x.Gender).Where(s => s.IdSerie == idSerie).ToList();
-            return gender;
+            var series = _dbContext.SerieGenders.Where(x => x.IdSerie == idSerie);
+
+            foreach(var serie in series)
+            {
+                 _dbContext.Remove(serie);
+                await _dbContext.SaveChangesAsync();
+            }
         }
     }
 }

@@ -13,31 +13,36 @@ namespace Application.Services
         private readonly ISeriesRepository _seriesRepository;
         private readonly IMapper _mapper;
         private readonly ISerieGenderService _serieGenderService;
-        private readonly IGenderService _genderService;
-        private readonly ISeriesGendersRepository _seriesGendersRepository;
-
-        public SeriesServices(IMapper mapper, ISeriesRepository series, ISerieGenderService serieGenderService, IGenderService genderService, ISeriesGendersRepository seriesGendersRepository)
+        public SeriesServices(IMapper mapper, ISeriesRepository series, ISerieGenderService serieGenderService)
         {
             _mapper = mapper;
             _seriesRepository = series;
             _serieGenderService = serieGenderService;
-            _genderService = genderService;
-            _seriesGendersRepository = seriesGendersRepository;
         }
-        public async Task<SeriesViewModel> GetByIdAsync(int id)
+        public async Task<SeriesSaveViewModel> GetByIdAsync(int id)
         {
+            List<Genders> gender = _seriesRepository.GenderBySerie(id);
             var serie = await _seriesRepository.GetByIdAsync(id);
-            var serieView = _mapper.Map<SeriesViewModel>(serie);
+            var serieView = _mapper.Map<SeriesSaveViewModel>(serie);
+
+            serieView.IdGender = gender[0].Id;
+            serieView.IdGenderSecundary = gender[1].Id;
             return serieView;
         }
 
         public async Task<List<SeriesViewModel>> GetAllAsync()
         {
-            var series = await _seriesRepository.GetAllWithIncludeAsync(new List<string> { "ProductionCompain"});
-            var seriesList = series.Select(_mapper.Map<SeriesViewModel>).ToList();
             List<Genders> gender = new();
-            
-
+            var series = await _seriesRepository.GetAllWithIncludeAsync(new List<string> { "ProductionCompain"});
+            var seriesList = series.Select(x => new SeriesViewModel()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                ImagenUrl = x.ImagenUrl,
+                VideoUrl = x.VideoUrl,
+                IdProduction = x.ProductionCompain.Id,
+                ProductionName = x.ProductionCompain.Name
+            }).ToList();
             foreach(var serie in seriesList)
             {
                 gender = _seriesRepository.GenderBySerie(serie.Id);
@@ -46,7 +51,6 @@ namespace Application.Services
                 serie.PrimaryGender = gender[0].Name;
                 serie.SecundaryGender = gender[1].Name;
             }
-            
             return seriesList;
         }
 
@@ -55,8 +59,6 @@ namespace Application.Services
             var series = await GetAllAsync();
             var seriesList = series.Select(_mapper.Map<SeriesViewModel>).ToList();
           
-            
-
             if (serieFilter.Id != 0)
             {
                 seriesList = seriesList.Where(s => s.IdProduction == serieFilter.Id).ToList();
@@ -69,7 +71,6 @@ namespace Application.Services
             return seriesList;
         }
 
-
         public async Task AddAsync(SeriesSaveViewModel vm)
         {
             var serie = _mapper.Map<Series>(vm);
@@ -77,6 +78,7 @@ namespace Application.Services
             serie.DateOfCreation = DateTime.Now;
             await _seriesRepository.AddAsync(serie);
             await _serieGenderService.AddAsync(vm);
+
         }
 
         public async Task UpdateAsync(SeriesSaveViewModel vm)
@@ -84,6 +86,7 @@ namespace Application.Services
             var serie = _mapper.Map<Series>(vm);
             serie.DateOfEdit = DateTime.Now;
             await _seriesRepository.UpdateAsync(serie);
+            await _serieGenderService.UpdateAsync(vm);
         }
 
         public async Task DeleteAsync(SeriesSaveViewModel vm)

@@ -1,4 +1,4 @@
-﻿@model Application.ViewModels.SeriesViewModel.SeriesViewModel
+﻿@model Application.ViewModels.SeriesViewModel.SeriesSaveViewModel
 @{
 
     ViewData["Title"] = "Delete Serie";
@@ -17,7 +17,7 @@
                     <h2> DO YOU WANT TO DELETE THE SERIE: @Model.Name ? </h2>
                     <input type="hidden" asp-for="Id" />
                     <button class="btn btn-outline-danger float-end ms-1 " type="submit" asp-controller="Series" asp-action="Delete">Delete</button>
-                    <button class="btn btn-danger float-end" type="submit" asp-controller="Production" asp-action="Index">Cancel</button>
+                    <button class="btn btn-danger float-end" type="submit" asp-controller="Series" asp-action="Index">Cancel</button>
                 </div>
             </form>
         </div>

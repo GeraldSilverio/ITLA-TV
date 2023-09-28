@@ -12,10 +12,15 @@ namespace ITLA_TV
         public AutoMapper()
         {
             CreateMap<SeriesSaveViewModel, Series>();
-            CreateMap<Series, SeriesViewModel>().ForMember(dest => dest.IdProduction, opt => opt.MapFrom(src => src.ProductionCompain.Id))
-                .ForMember(dest => dest.ProductionName, opt => opt.MapFrom(src => src.ProductionCompain.Name));
 
-         
+            CreateMap<Series, SeriesViewModel>()
+            .ForMember(dest => dest.IdProduction, opt => opt.MapFrom(src => src.ProductionCompain.Id))
+            .ForMember(dest => dest.ProductionName, opt => opt.MapFrom(src => src.ProductionCompain.Name));
+
+            CreateMap<Series, SeriesViewModel>();
+            CreateMap<Series, SeriesSaveViewModel>();
+
+            CreateMap<SeriesViewModel, Series>();
             CreateMap<SerieGenderSaveViewModel, SerieGender>();
 
             CreateMap<Genders,GenderViewModel>();

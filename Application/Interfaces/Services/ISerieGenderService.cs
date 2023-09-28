@@ -6,9 +6,7 @@ namespace Application.Interfaces.Services
 {
     public interface ISerieGenderService
     {
-        Task<List<SerieGenderSaveViewModel>> GetAllAsync();
         Task AddAsync(SeriesSaveViewModel vm);
-        Task UpdateAsync(SerieGenderSaveViewModel vm);
-        Task DeleteAsync(SerieGenderSaveViewModel vm);
+        Task UpdateAsync(SeriesSaveViewModel vm);
     }
 }

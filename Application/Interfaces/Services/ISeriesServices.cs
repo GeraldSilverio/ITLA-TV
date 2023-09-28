@@ -4,7 +4,7 @@ namespace Application.Interfaces.Repositories
 {
     public interface ISeriesServices
     {
-        Task<SeriesViewModel> GetByIdAsync(int id);
+        Task<SeriesSaveViewModel> GetByIdAsync(int id);
         Task<List<SeriesViewModel>> GetAllAsync();
         Task AddAsync(SeriesSaveViewModel vm);
         Task UpdateAsync(SeriesSaveViewModel vm);

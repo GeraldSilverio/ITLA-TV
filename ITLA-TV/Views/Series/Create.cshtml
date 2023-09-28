@@ -3,7 +3,7 @@
 @model Application.ViewModels.SeriesViewModel.SeriesSaveViewModel
 
 @{
-    bool editMode = Model.Id == 0 ? true : false;
+    bool editMode = Model.Id == 0 ? false : true;
     ViewData["Title"] = "Save Serie";
 }
 
@@ -12,10 +12,10 @@
     <div class="col-6 offset-3">
         <div class="card">
             <div class="card-header bg-dark text-light">
-                <h4>@(editMode ? "Adding a New Serie" : $"Editing Serie: {Model.Name}")</h4>
+                <h4 class="text-center  text-light">@(editMode ? $"EDITING THE SERIE: {Model.Name}" : "CREATING A SERIE")</h4>
             </div>
             <div class="card-body">
-                 <form method="post" asp-controller="Series" asp-action="Create"> 
+                 <form method="post" asp-controller="Series" asp-action="@(editMode ? "Update":"Create")"> 
                     <div class="mb-3">
                         <label asp-for="Name" class="form-label" autocomplete="off">Name: </label>
                         <input  asp-for="Name" type="text" class="form-control" autocomplete="off">
@@ -83,3 +83,4 @@
         </div>
     </div>
 </div>
+

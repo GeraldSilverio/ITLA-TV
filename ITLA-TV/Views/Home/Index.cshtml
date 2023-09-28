@@ -19,7 +19,7 @@
         <form class="row g-3 ms-3" asp-controller="Home" asp-action="Index">
             <div class="col-auto">
                 <select class="form-select" id="Id" name="Id" aria-label="Floating label select example">
-                    
+                     <option selected>Select a Production</option>
                     @foreach (ProductionViewModel production in ViewBag.Productions)
                     {
                         <option value="@production.Id">@production.Name</option>
@@ -44,12 +44,12 @@
                         @foreach (Application.ViewModels.SeriesViewModel.SeriesViewModel item in Model)
                         {
                             <div class="col-4 mb-3">
-                                <div class="card" style="width: 18rem;">
+                                <div class="card" style="width: 19rem;">
                                     <img src="@item.ImagenUrl" class="card-img-top img-serie-size">
                                     <div class="card-body">
-                                        <h5 class="card-title">@item.Name</h5>
-                                        <h5 class="card-text">Production: @item.ProductionName</h5>
-                                       <h5 class="card-text">Genders:@item.PrimaryGender,@item.SecundaryGender</h5>
+                                        <h4 class="card-title"><strong>@item.Name</strong></h4>
+                                        <h5 class="card-text"> Production: @item.ProductionName</h5>
+                                        <h5 class="card-text">Genders:@item.PrimaryGender,@item.SecundaryGender</h5>
                                         <a class="btn btn-success float-end" asp-area="Home" asp-action="Details"
                                             asp-route-id="@item.Id">DETAILS</a>
                                     </div>

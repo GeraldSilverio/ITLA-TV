@@ -24,7 +24,7 @@ namespace ITLA_TV.Controllers.HomeController
         }
         public async Task<IActionResult> Details(int id)
         {
-            SeriesViewModel serie = await _seriesServices.GetByIdAsync(id);
+            SeriesSaveViewModel serie = await _seriesServices.GetByIdAsync(id);
             
             return View("Details",serie);
         }

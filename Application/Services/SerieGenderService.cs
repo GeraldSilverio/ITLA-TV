@@ -4,6 +4,7 @@ using Application.ViewModels.SerieGenderViewModel;
 using Application.ViewModels.SeriesViewModel;
 using AutoMapper;
 using Database.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,37 +34,39 @@ namespace Application.Services
             {
                 IdSerie = serieCreated.Id,
                 IdGender = vm.IdGender,
+                DateOfCreation = DateTime.Now
             };
             var serieGenderSecundary = new SerieGender()
             {
                 IdSerie = serieCreated.Id,
                 IdGender = vm.IdGenderSecundary,
+                DateOfCreation = DateTime.Now
             };
 
             await _serieGenderRepository.AddAsync(serieGender);
             await _serieGenderRepository.AddAsync(serieGenderSecundary);
         }
 
-        public Task DeleteAsync(SerieGenderSaveViewModel vm)
+        public async Task UpdateAsync(SeriesSaveViewModel vm)
         {
-            throw new NotImplementedException();
-        }
+            await _serieGenderRepository.ClearSerieGender(vm.Id);
 
-        public Task<List<SerieGenderSaveViewModel>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<SerieGenderSaveViewModel> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
+            var serieGender = new SerieGender()
+            {
+                IdSerie = vm.Id,
+                IdGender = vm.IdGender,
+                DateOfEdit = DateTime.Now
+            };
+            var serieGenderSecundary = new SerieGender()
+            {
+                IdSerie = vm.Id,
+                IdGender = vm.IdGenderSecundary,
+                DateOfEdit = DateTime.Now
+            };
 
-        public Task UpdateAsync(SerieGenderSaveViewModel vm)
-        {
-            throw new NotImplementedException();
+            await _serieGenderRepository.AddAsync(serieGender);
+            await _serieGenderRepository.AddAsync(serieGenderSecundary);
         }
-
-       
     }
 }

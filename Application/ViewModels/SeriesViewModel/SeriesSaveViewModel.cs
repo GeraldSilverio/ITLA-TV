@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Application.Validations;
+using System.ComponentModel.DataAnnotations;
 
 namespace Application.ViewModels.SeriesViewModel
 {
@@ -17,10 +18,10 @@ namespace Application.ViewModels.SeriesViewModel
         [Range(1, int.MaxValue, ErrorMessage = "Produccion cannot be Empty")]
         public int IdProduction { get; set; }
 
+        [GenderValidation]
         [Range(1, int.MaxValue, ErrorMessage = "Primary Gender cannot be Empty")]
         public int IdGender { get; set; }
         [Range(1, int.MaxValue, ErrorMessage = "Secundary Gender cannot be Empty")]
         public int IdGenderSecundary { get; set; }
-        
     }
 }
