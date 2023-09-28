@@ -1,6 +1,9 @@
 ﻿using Application.Interfaces.Repositories;
 using Application.Interfaces.Services;
+using Application.Services;
+using Application.ViewModels.GendersViewModel;
 using Application.ViewModels.ProductionViewModel;
+using Application.ViewModels.SeriesViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,13 +17,14 @@ namespace Application.Validations
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            var genderService = validationContext.GetService(typeof(IGenderService)) as IGenderService;
+            var genderService = (IGenderService)validationContext.GetService(typeof(IGenderService));
             var name = (string)value;
-            var viewModel = (ProductionSaveViewModel)validationContext.ObjectInstance;
+            var viewModel = (SaveGenderViewModel)validationContext.ObjectInstance;
 
+            // Verificar si el nombre ya existe en la base de datos
             if (genderService.IsNameCreated(name, viewModel.Id))
             {
-                return new ValidationResult("The name was created.Please write other name.");
+                return new ValidationResult("El nombre ya existe en la base de datos.");
             }
 
             return ValidationResult.Success;

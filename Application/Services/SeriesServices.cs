@@ -26,8 +26,21 @@ namespace Application.Services
             var serie = await _seriesRepository.GetByIdAsync(id);
             var serieView = _mapper.Map<SeriesSaveViewModel>(serie);
 
-            serieView.IdGender = gender[0].Id;
-            serieView.IdGenderSecundary = gender[1].Id;
+            if(gender.Count == 2)
+            {
+                serieView.IdGender = gender[0].Id;
+                serieView.IdGenderSecundary = gender[1].Id;
+            }
+            else if(gender.Count ==1)
+            {
+                serieView.IdGender = gender[0].Id;
+            }
+            else
+            {
+                return serieView;
+            }
+
+            
             return serieView;
         }
 
@@ -44,13 +57,29 @@ namespace Application.Services
                 IdProduction = x.ProductionCompain.Id,
                 ProductionName = x.ProductionCompain.Name
             }).ToList();
+
             foreach(var serie in seriesList)
             {
                 gender = _seriesRepository.GenderBySerie(serie.Id);
-                serie.IdGender = gender[0].Id;
-                serie.IdGenderSecundary = gender[1].Id;
-                serie.PrimaryGender = gender[0].Name;
-                serie.SecundaryGender = gender[1].Name;
+
+                if(gender.Count == 2)
+                {
+                    serie.IdGender = gender[0].Id;
+                    serie.IdGenderSecundary = gender[1].Id;
+                    serie.PrimaryGender = gender[0].Name;
+                    serie.SecundaryGender = gender[1].Name;
+
+                }
+                else if(gender.Count == 1)
+                {
+                    serie.IdGender = gender[0].Id;
+                    serie.SecundaryGender = gender[0].Name;
+                }
+                else
+                {
+                    return seriesList;
+                }
+
             }
             return seriesList;
         }

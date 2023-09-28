@@ -11,5 +11,4 @@ namespace Application.ViewModels.GendersViewModel
         [Required(ErrorMessage = "NAME CANNOT BE EMPYT")]
         public string Name { get; set; } = null!;
     }
-
 }
