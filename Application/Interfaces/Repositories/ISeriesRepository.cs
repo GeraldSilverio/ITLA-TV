@@ -8,6 +8,7 @@ namespace Application.Interfaces.Repositories
     {
         Task<Series> GetSerieByName(string name);
         List<Genders> GenderBySerie(int idSerie);
+        bool IsNameCreated(string name, int idSerie);
 
     }
 }

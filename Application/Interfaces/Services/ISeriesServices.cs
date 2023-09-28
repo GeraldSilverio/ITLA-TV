@@ -10,6 +10,7 @@ namespace Application.Interfaces.Repositories
         Task UpdateAsync(SeriesSaveViewModel vm);
         Task DeleteAsync(SeriesSaveViewModel vm);
         Task<List<SeriesViewModel>> GetByFiltersAsync(SerieFilterViewModel serieFilter);
+        bool IsNameCreated(string name, int idSerie);
 
     }
 }

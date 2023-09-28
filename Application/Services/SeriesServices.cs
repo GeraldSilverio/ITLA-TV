@@ -5,6 +5,7 @@ using Application.ViewModels.SerieGenderViewModel;
 using Application.ViewModels.SeriesViewModel;
 using AutoMapper;
 using Database.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Services
 {
@@ -94,5 +95,11 @@ namespace Application.Services
             var serie = _mapper.Map<Series>(vm);
             await _seriesRepository.DeleteAsync(serie);
         }
+
+        public bool IsNameCreated(string name, int idSerie)
+        {
+            return _seriesRepository.IsNameCreated(name, idSerie);
+        }
+
     }
 }

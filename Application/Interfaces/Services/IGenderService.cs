@@ -9,7 +9,8 @@ namespace Application.Interfaces.Repositories
         Task AddAsync(SaveGenderViewModel vm);
         Task UpdateAsync(SaveGenderViewModel vm);
         Task DeleteAsync(SaveGenderViewModel vm);
-        
+        bool IsNameCreated(string name, int idSerie);
+
     }
 }
 

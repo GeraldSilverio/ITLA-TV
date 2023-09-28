@@ -44,6 +44,11 @@ namespace Application.Services
             return saveProduction;
         }
 
+        public bool IsNameCreated(string name, int idSerie)
+        {
+            return _productionRepository.IsNameCreated(name, idSerie);
+        }
+
         public async Task UpdateAsync(ProductionSaveViewModel vm)
         {
             var production = _mapper.Map<ProductionCompain>(vm);

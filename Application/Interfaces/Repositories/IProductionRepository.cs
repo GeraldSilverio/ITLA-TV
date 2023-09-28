@@ -10,6 +10,6 @@ namespace Application.Interfaces.Repositories
 {
     public interface IProductionRepository:IBaseRepository<ProductionCompain>
     {
-
+        bool IsNameCreated(string name, int idSerie);
     }
 }

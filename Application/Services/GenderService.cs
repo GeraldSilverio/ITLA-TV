@@ -43,6 +43,11 @@ public class GenderService : IGenderService
         return saveGender;
     }
 
+    public bool IsNameCreated(string name, int idSerie)
+    {
+        return _genderRepository.IsNameCreated(name, idSerie);
+    }
+
     public async Task UpdateAsync(SaveGenderViewModel vm)
     {
         var gender = _mapper.Map<Genders>(vm);

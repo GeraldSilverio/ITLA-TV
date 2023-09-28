@@ -5,8 +5,7 @@ namespace Application.Interfaces.Repositories
 {
     public interface IGendersRepository:IBaseRepository<Genders>
     {
-        
-
+        bool IsNameCreated(string name, int idSerie);
     }
 }
 

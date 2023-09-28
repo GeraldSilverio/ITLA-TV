@@ -14,5 +14,6 @@ namespace Application.Interfaces.Services
         Task AddAsync(ProductionSaveViewModel vm);
         Task UpdateAsync(ProductionSaveViewModel vm);
         Task DeleteAsync(ProductionSaveViewModel vm);
+        bool IsNameCreated(string name, int idSerie);
     }
 }

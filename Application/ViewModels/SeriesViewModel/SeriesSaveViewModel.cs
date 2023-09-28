@@ -1,4 +1,5 @@
-﻿using Application.Validations;
+﻿using Application.Interfaces.Repositories;
+using Application.Validations;
 using System.ComponentModel.DataAnnotations;
 
 namespace Application.ViewModels.SeriesViewModel
@@ -6,6 +7,7 @@ namespace Application.ViewModels.SeriesViewModel
     public class SeriesSaveViewModel
     {
         public int Id { get; set; }
+        [NameOfSerieValidation]
         [Required(ErrorMessage = "Name cannot be Empty")]
         public string Name { get; set; } = null!;
 

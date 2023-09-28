@@ -30,5 +30,11 @@ namespace Application.Repositories
 
             return serie;
         }
+
+        public bool IsNameCreated(string name, int idSerie)
+        {
+            return _dbContext.Series.Any(s => s.Name == name && s.Id != idSerie);
+        }
+
     }
 }

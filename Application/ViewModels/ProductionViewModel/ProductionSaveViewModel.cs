@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Application.Validations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Application.ViewModels.ProductionViewModel
     public class ProductionSaveViewModel
     {
         public int Id { get; set; }
+        [NameOfProductionValidation]
         [Required(ErrorMessage = "NAME CANNOT BE EMPYT")]
         public string Name { get; set; } = null!;
     }
